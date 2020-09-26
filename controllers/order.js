@@ -29,6 +29,7 @@ exports.createOrder = (req, res) => {
 }
 
 exports.getAllOrders = (req, res) => {
+    console.log("Received a GET ALL ORDERS request");
     Order.findById()
         .populate("user", "_id name")
         .exec((err, order) => {
