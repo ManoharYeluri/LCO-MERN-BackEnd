@@ -8,6 +8,7 @@ const { sortBy } = require("lodash");
 const { bulkWrite } = require("../models/product");
 
 exports.getProductById = (req, res, next, id) => {
+    console.log("Received a GET PRODUCT BY ID request");
     Product.findById(id)
         .populate("category")
         .exec((err, product) => {
@@ -22,6 +23,7 @@ exports.getProductById = (req, res, next, id) => {
 }
 
 exports.createProduct = (req, res) => {
+    console.log("Received a CREATE A PRODUCT request");
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
 
@@ -66,6 +68,7 @@ exports.createProduct = (req, res) => {
 }
 
 exports.getProduct = (req, res) => {
+    console.log("Received a GET PRODUCT request");
     req.product.photo = undefined;
     return res.json(req.product)
 }
@@ -79,6 +82,7 @@ exports.photo = (req, res, next) => {
 }
 
 exports.deleteProduct = (req, res) => {
+    console.log("Received a DELETE PRODUCT request");
     let product = req.product;
     product.remove((err, deletedProduct) => {
         if (err) {
@@ -94,6 +98,7 @@ exports.deleteProduct = (req, res) => {
 }
 
 exports.updateProduct = (req, res) => {
+    console.log("Received a UPDATE PRODUCT request");
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
 
@@ -132,6 +137,7 @@ exports.updateProduct = (req, res) => {
 }
 
 exports.getAllProducts = (req, res) => {
+    console.log("Received a GET ALL PRODUCTS request");
     let limit = req.query.limit ? parseInt(req.query.limit) : 8;
     let sortBy = req.query.sortBy ? req.query.limit : "_id";
 

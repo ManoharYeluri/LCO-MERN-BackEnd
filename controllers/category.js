@@ -1,6 +1,7 @@
 const Category = require("../models/category");
 
 exports.getCategoryById = (req, res, next, id) => {
+    console.log("Received a GET CATEGORY BY ID request");
     Category.findById(id).exec((err, cate) => {
         if (err) {
             return res.status(400).json({
@@ -13,7 +14,7 @@ exports.getCategoryById = (req, res, next, id) => {
 }
 
 exports.createCategory = (req, res) => {
-    console.log("Received a Create Category Request");
+    console.log("Received a CREATE CATEGORY Request");
     const category = new Category(req.body);
     category.save((err, category) => {
         if (err) {
@@ -30,6 +31,7 @@ exports.getCategory = (req, res) => {
 }
 
 exports.getAllCategory = (req, res) => {
+    console.log("Received a GET ALL CATEGORIES request");
     Category.find().exec((err, categories) => {
         if (err) {
             return res.status(400).json({
@@ -41,7 +43,7 @@ exports.getAllCategory = (req, res) => {
 }
 
 exports.updateCategory = (req, res) => {
-    console.log("Received a Update Category Request");
+    console.log("Received a UPDATE CATEGORY Request");
     const category = req.category;
     category.name = req.body.name;
 
@@ -51,12 +53,12 @@ exports.updateCategory = (req, res) => {
                 error: "Failed to update category"
             })
         }
-        res.json(category);
+        res.json(cate);
     })
 }
 
 exports.removeCategory = (req, res) => {
-    console.log("Received a Remove Category Request");
+    console.log("Received a DELETE CATEGORY Request");
     const category = req.category;
     category.remove((err, category) => {
         if (err) {

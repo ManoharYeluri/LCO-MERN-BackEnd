@@ -43,6 +43,7 @@ exports.getAllOrders = (req, res) => {
 }
 
 exports.getOrderStatus = (req, res) => {
+    console.log("Received a GET ORDER STATUS request");
     res.json(Order.schema.path("status").enumValues)
 }
 
