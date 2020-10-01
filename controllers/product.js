@@ -139,7 +139,7 @@ exports.updateProduct = (req, res) => {
 exports.getAllProducts = (req, res) => {
     console.log("Received a GET ALL PRODUCTS request");
     let limit = req.query.limit ? parseInt(req.query.limit) : 8;
-    let sortBy = req.query.sortBy ? req.query.limit : "_id";
+    let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
 
     Product.find()
         .select("-photo")

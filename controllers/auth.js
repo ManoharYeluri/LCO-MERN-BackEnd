@@ -5,7 +5,6 @@ var expressJwt = require('express-jwt');
 
 exports.signup = (req, res) => {
     console.log("Received a SIGN-UP request");
-    console.log(req.body);
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
